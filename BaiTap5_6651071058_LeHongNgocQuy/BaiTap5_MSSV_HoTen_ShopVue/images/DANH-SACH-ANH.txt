@@ -1,0 +1,4 @@
+Ảnh thật dùng trong bài (lưu vào thư mục này, định dạng .jpg, đúng tên file):
+op-lung-xanh.jpg, op-lung-trong.jpg, sac-khong-day.jpg, tai-nghe-tws.jpg, cap-sac-usb-c.jpg, pin-du-phong.jpg, gia-do-dien-thoai.jpg, tai-nghe-chup-tai.jpg
+Khi chưa có file .jpg: trang thử ảnh thật từ Internet (loremflickr.com); nếu cũng lỗi thì hiện ảnh .svg minh hoạ có sẵn trong thư mục này.
+Nguồn ảnh miễn phí gợi ý: unsplash.com, pexels.com.

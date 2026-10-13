@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Học web chuẩn</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+
+</head>
+
+<body>
+    <h2>Tìm hiểu về Accordion</h2>
+    <h3>Chủ đề 1 - HTML </h3>
+    <div class="box">HTML (viết tắt của từ HyperText Markup Language, hay còn gọi là "Ngôn ngữ Đánh dấu Siêu văn bản") là
+        một ngôn ngữ đánh dấu được thiết kế ra để tạo nên các trang web trên World Wide Web. </div>
+
+    <h3>Chủ đề 2 - CSS</h3>
+    <div class="box">CSS là chữ viết tắt của Cascading Style Sheets, nó là một ngôn ngữ được sử dụng để tìm và định dạng
+        lại các phần tử được tạo ra bởi các ngôn ngữ đánh dấu (HTML). Nói ngắn gọn hơn là ngôn ngữ tạo phong cách cho
+        trang web</div>
+
+    <h3>Chủ đề 3 - jQuery</h3>
+    <div class="box">jQuery là một thư viện JavaScript được thiết kế đơn giản hóa thao tác HTML DOM, cũng như xử lý sự
+        kiện, hoạt ảnh CSS, và Ajax</div>
+<script>
+$(function () {
+    // Accordion: click h3 -> mở box kế tiếp, đóng các box còn lại
+    $('h3').on('click', function () {
+        var box = $(this).next('.box');
+        $('.box').not(box).slideUp(250);
+        box.slideToggle(250);
+    });
+
+    // Mặc định mở chủ đề đầu tiên
+    $('h3').first().next('.box').show();
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thêm và xóa hàng trong Table </title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body style="border:1px solid grey">
+  	<h2>Quản lý thông tin user</h2>
+    <form>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="email" placeholder="Email Address">
+        <input type="text" placeholder="Birthdate" id="datepicker">
+    	<input type="button" class="add-row" value="Add Row">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Birthdate</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+    <button type="button" class="delete-row">Delete Row</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+$(function () {
+    $('#datepicker').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1950:+0',
+        maxDate: 0
+    });
+
+    $('.add-row').on('click', function () {
+        var name  = $('#name').val().trim();
+        var email = $('#email').val().trim();
+        var birth = $('#datepicker').val().trim();
+
+        if (!name || !email || !birth) {
+            alert('Vui lòng nhập đầy đủ Name, Email và Birthdate!');
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            alert('Email không hợp lệ!');
+            return;
+        }
+
+        var row = $('<tr>')
+            .append($('<td>').append($('<input>', { type: 'checkbox', name: 'record' })))
+            .append($('<td>').text(name))
+            .append($('<td>').text(email))
+            .append($('<td>').text(birth));
+        $('table tbody').append(row);
+
+        $('#name, #email, #datepicker').val('');
+        $('#name').focus();
+    });
+
+    $('.delete-row').on('click', function () {
+        var checked = $('table tbody input[name="record"]:checked');
+        if (!checked.length) {
+            alert('Hãy chọn ít nhất một hàng để xóa!');
+            return;
+        }
+        checked.closest('tr').remove();
+    });
+
+    // Enter trong form không reload trang, mà thêm hàng
+    $('form').on('submit', function (e) { e.preventDefault(); $('.add-row').click(); });
+});
+</script>
+</body>
+</html>

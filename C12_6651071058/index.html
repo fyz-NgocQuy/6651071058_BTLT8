@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">	
+<title>D CODE SHOW</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+</style>
+</head>
+<body>
+<h4>Checkbox Div Hide Show</h4>
+
+<div class="checkbox-card">
+	<label for="">Do You have Passport</label>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" class="checkme">Yes
+		</label>
+	</div>
+	<div class="passport-box">
+		<input type="text" placeholder="Enter Passport Number" 
+		class="form-control">
+	</div>
+	<div class="apply-box">
+		<a href="">Apply For Passport</a>
+	</div>
+</div>
+<br>
+<div class="checkbox-card">
+	<label for="">Do You have Credit Card</label>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" class="checkme">Yes
+		</label>
+	</div>
+	<div class="passport-box">
+		<input type="text" placeholder="Enter Credit Card Number" 
+		class="form-control">
+	</div>
+	<div class="apply-box">
+		<a href="">Apply For Credit Card</a>
+	</div>
+</div>
+
+	
+
+	
+
+
+
+<script src="js/jquery-latest.min.js"></script>
+
+<script>
+$(function () {
+    // Tick "Yes" -> hiện ô nhập + link Apply của CHÍNH card đó; bỏ tick -> ẩn
+    $('.checkme').on('change', function () {
+        var card = $(this).closest('.checkbox-card');
+        if (this.checked) {
+            card.find('.passport-box, .apply-box').slideDown(200);
+        } else {
+            card.find('.passport-box, .apply-box').slideUp(200);
+        }
+    });
+});
+</script>
+</body>
+</html>

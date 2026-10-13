@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Melody Bakery - tiệm bánh ngọt thủ công, tươi ngon mỗi ngày.">
+  <title>Melody Bakery | Ngọt ngào mỗi ngày</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { rosebrand: '#d94f78', blush: '#fff1f5', roseink: '#542536' },
+        fontFamily: { sans: ['Be Vietnam Pro', 'sans-serif'] }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-white text-roseink">
+  <header class="sticky top-0 z-50 border-b border-rose-100 bg-white/95 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Điều hướng chính">
+      <a href="#trang-chu" class="brand flex items-center gap-2" aria-label="Melody Bakery - Trang chủ">
+        <span class="brand-mark">m</span><span class="text-2xl font-extrabold tracking-tight">melody<span class="text-rosebrand">.</span></span>
+      </a>
+      <div id="desktop-menu" class="hidden items-center gap-8 md:flex">
+        <a class="nav-link" href="#trang-chu">Trang chủ</a>
+        <a class="nav-link" href="#menu-banh">Menu bánh</a>
+        <a class="nav-link" href="#cau-chuyen">Câu chuyện</a>
+        <a class="nav-link" href="#dat-banh">Đặt bánh</a>
+      </div>
+      <a href="#dat-banh" class="hidden rounded-full bg-rosebrand px-5 py-3 text-sm font-bold text-white shadow-lg shadow-rose-200 transition hover:-translate-y-0.5 hover:bg-pink-700 sm:inline-flex">Đặt bánh ngay <span class="ml-2">↗</span></a>
+      <button id="menu-toggle" class="rounded-xl border border-rose-100 p-2 text-rosebrand md:hidden" aria-label="Mở menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-rose-100 bg-white px-5 py-4 md:hidden">
+      <a class="mobile-link" href="#trang-chu">Trang chủ</a><a class="mobile-link" href="#menu-banh">Menu bánh</a>
+      <a class="mobile-link" href="#cau-chuyen">Câu chuyện</a><a class="mobile-link" href="#dat-banh">Đặt bánh</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="trang-chu" class="hero-wrap">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:py-24 lg:px-8">
+        <div class="reveal">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Bánh tươi mỗi ngày · Làm bằng cả trái tim</span>
+          <h1 class="mt-6 max-w-xl text-5xl font-extrabold leading-[1.08] tracking-tight md:text-6xl">Một chút ngọt ngào, <span class="text-rosebrand">cả ngày dịu dàng.</span></h1>
+          <p class="mt-6 max-w-lg text-base leading-8 text-stone-600 md:text-lg">Những chiếc bánh thủ công được làm mới mỗi sáng, từ nguyên liệu tuyển chọn và những điều nhỏ xinh dành riêng cho bạn.</p>
+          <div class="mt-8 flex flex-wrap gap-3"><a href="#menu-banh" class="rounded-full bg-rosebrand px-7 py-4 font-bold text-white shadow-xl shadow-rose-200 transition hover:-translate-y-1">Khám phá menu <span class="ml-2">→</span></a><a href="#cau-chuyen" class="rounded-full border border-rose-200 bg-white px-7 py-4 font-bold transition hover:bg-blush">Về Melody</a></div>
+          <div class="mt-10 flex items-center gap-4"><div class="flex -space-x-3"><img class="avatar" src="https://images.unsplash.com/photo-1551024506-0zczh7?auto=format&fit=crop&w=80&q=80" alt="Khách hàng"><img class="avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Khách hàng"><img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" alt="Khách hàng"></div><div><p class="font-bold">Được yêu thích mỗi ngày</p><p class="text-sm text-stone-500">Bánh ngon, niềm vui thật gần.</p></div></div>
+        </div>
+        <div class="hero-photo-wrap reveal"><img class="hero-photo" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=88" alt="Bánh kem dâu tươi được trang trí thủ công"><div class="floating-note"><span class="text-2xl">♡</span><div><p class="font-bold">Baked with love</p><p class="text-xs text-stone-500">Tươi mới mỗi ngày</p></div></div><div class="photo-stamp">MADE<br>FRESH<br>DAILY</div></div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+      <div class="grid grid-cols-2 gap-3 rounded-3xl bg-blush p-5 md:grid-cols-4 md:p-7">
+        <div class="benefit"><span>✦</span><div><b>Nguyên liệu chọn lọc</b><p>Ưu tiên chất lượng</p></div></div>
+        <div class="benefit"><span>♡</span><div><b>Làm mới mỗi ngày</b><p>Luôn tươi ngon</p></div></div>
+        <div class="benefit"><span>♧</span><div><b>Trang trí thủ công</b><p>Chăm chút từng chiếc</p></div></div>
+        <div class="benefit"><span>⌁</span><div><b>Gói quà xinh xắn</b><p>Trao gửi yêu thương</p></div></div>
+      </div>
+    </section>
+
+    <!-- Bài này tự phối utility-class của Tailwind để tạo từng thẻ bánh, không dùng Card component dựng sẵn.
+         Cách làm utility-first khác Bootstrap ở Bài 1: giao diện được ghép từ các lớp tiện ích nhỏ ngay trong HTML. -->
+    <section id="menu-banh" class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div class="section-heading"><div><p class="eyebrow-text">MÓN ĐƯỢC YÊU THÍCH</p><h2 class="section-title">Menu bánh <span>nhà Melody</span></h2><p class="mt-3 max-w-xl leading-7 text-stone-500">Từ chiếc bánh nhỏ cho buổi trà chiều đến bánh kem cho ngày thật đặc biệt.</p></div><a href="#dat-banh" class="text-sm font-bold text-rosebrand hover:underline">Đặt bánh theo yêu cầu ↗</a></div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="cake-card"><div class="cake-image"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85" alt="Bánh kem dâu tươi"><span class="product-tag">Bán chạy</span></div><div class="p-5"><div class="flex items-start justify-between gap-3"><h3 class="text-lg font-bold">Bánh kem dâu tươi</h3><span class="price">320.000đ</span></div><p class="mt-2 text-sm leading-6 text-stone-500">Kem sữa mềm mịn, dâu tươi chua ngọt và cốt bánh bông lan nhẹ.</p><a href="#dat-banh" class="product-link">Chọn bánh <span>↗</span></a></div></article>
+        <article class="cake-card"><div class="cake-image"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=85" alt="Bánh brownie chocolate"><span class="product-tag">Đậm vị</span></div><div class="p-5"><div class="flex items-start justify-between gap-3"><h3 class="text-lg font-bold">Brownie chocolate</h3><span class="price">55.000đ</span></div><p class="mt-2 text-sm leading-6 text-stone-500">Chocolate đậm đà, mặt bánh hơi giòn, bên trong ẩm mềm.</p><a href="#dat-banh" class="product-link">Chọn bánh <span>↗</span></a></div></article>
+        <article class="cake-card"><div class="cake-image"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85" alt="Bánh mousse dâu"><span class="product-tag">Nhẹ nhàng</span></div><div class="p-5"><div class="flex items-start justify-between gap-3"><h3 class="text-lg font-bold">Mousse dâu</h3><span class="price">68.000đ</span></div><p class="mt-2 text-sm leading-6 text-stone-500">Lớp mousse mượt mà cùng vị dâu thanh dịu, dùng ngon khi mát lạnh.</p><a href="#dat-banh" class="product-link">Chọn bánh <span>↗</span></a></div></article>
+        <article class="cake-card"><div class="cake-image"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85" alt="Bánh croissant vàng giòn"></div><div class="p-5"><div class="flex items-start justify-between gap-3"><h3 class="text-lg font-bold">Croissant bơ</h3><span class="price">42.000đ</span></div><p class="mt-2 text-sm leading-6 text-stone-500">Nhiều lớp bột mỏng, thơm mùi bơ và vàng giòn vừa đủ.</p><a href="#dat-banh" class="product-link">Chọn bánh <span>↗</span></a></div></article>
+        <article class="cake-card"><div class="cake-image"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=85" alt="Cupcake kem hồng"></div><div class="p-5"><div class="flex items-start justify-between gap-3"><h3 class="text-lg font-bold">Cupcake vanilla</h3><span class="price">39.000đ</span></div><p class="mt-2 text-sm leading-6 text-stone-500">Cốt bánh vanilla thơm dịu, phủ kem bơ mềm và trang trí xinh xắn.</p><a href="#dat-banh" class="product-link">Chọn bánh <span>↗</span></a></div></article>
+        <article class="cake-card"><div class="cake-image"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=85" alt="Bánh tart trái cây tươi"><span class="product-tag">Theo mùa</span></div><div class="p-5"><div class="flex items-start justify-between gap-3"><h3 class="text-lg font-bold">Tart trái cây</h3><span class="price">59.000đ</span></div><p class="mt-2 text-sm leading-6 text-stone-500">Đế tart giòn, kem mịn và trái cây tươi nhiều màu sắc.</p><a href="#dat-banh" class="product-link">Chọn bánh <span>↗</span></a></div></article>
+      </div>
+    </section>
+
+    <section id="cau-chuyen" class="story-section">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 md:grid-cols-2 lg:px-8">
+        <div class="story-photo"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=85" alt="Không gian làm bánh ấm áp"><span class="story-caption">A little sweetness goes a long way.</span></div>
+        <div><p class="eyebrow-text">CÂU CHUYỆN THƯƠNG HIỆU</p><h2 class="section-title">Bắt đầu từ những <span>điều ngọt ngào.</span></h2><p class="mt-5 leading-8 text-stone-600">Melody được tạo nên từ một ý tưởng giản dị: mỗi ngày đều xứng đáng có một khoảnh khắc thật dễ thương. Chúng mình tin rằng một chiếc bánh ngon không chỉ nằm ở hương vị, mà còn ở sự chăm chút trong từng công đoạn.</p><p class="mt-4 leading-8 text-stone-600">Từ khâu chọn nguyên liệu đến lúc gói bánh, <strong class="font-semibold text-rosebrand">mọi chi tiết đều được làm bằng sự tận tâm</strong> để món quà nhỏ của bạn trở thành một kỷ niệm đáng nhớ.</p><a href="#dat-banh" class="mt-7 inline-flex rounded-full bg-rosebrand px-7 py-4 font-bold text-white transition hover:bg-pink-700">Cùng tạo một chiếc bánh đặc biệt ↗</a></div>
+      </div>
+    </section>
+
+    <section id="dat-banh" class="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-3">
+        <div class="lg:col-span-2"><p class="eyebrow-text">BẠN ĐANG CÓ MỘT DỊP ĐẶC BIỆT?</p><h2 class="section-title">Đặt bánh <span>theo ý bạn.</span></h2><p class="mt-3 max-w-2xl leading-7 text-stone-500">Cho Melody biết một chút về chiếc bánh bạn mong muốn. Bọn mình sẽ liên hệ để tư vấn chi tiết.</p>
+          <form id="order-form" class="mt-8 grid gap-5 rounded-3xl border border-rose-100 bg-white p-6 shadow-xl shadow-rose-100/50 sm:grid-cols-2 sm:p-8">
+            <div><label class="form-label" for="customer-name">Họ và tên</label><input class="form-input" id="customer-name" name="name" required placeholder="Tên của bạn"></div>
+            <div><label class="form-label" for="customer-phone">Số điện thoại</label><input class="form-input" id="customer-phone" name="phone" type="tel" required pattern="[0-9+\s().-]{9,15}" placeholder="09xx xxx xxx"></div>
+            <div><label class="form-label" for="cake-type">Bạn muốn đặt</label><select class="form-input" id="cake-type" name="cake"><option>Bánh kem sinh nhật</option><option>Bánh dâu tươi</option><option>Bánh mousse</option><option>Bánh ngọt lẻ</option><option>Thiết kế riêng</option></select></div>
+            <div><label class="form-label" for="pickup-date">Ngày nhận bánh</label><input class="form-input" id="pickup-date" name="date" type="date"></div>
+            <div class="sm:col-span-2"><label class="form-label" for="order-note">Lời nhắn / yêu cầu trang trí</label><textarea class="form-input" id="order-note" name="note" rows="4" placeholder="Màu sắc, lời chúc, kích thước..."></textarea></div>
+            <div class="sm:col-span-2"><button class="w-full rounded-full bg-rosebrand px-7 py-4 font-bold text-white shadow-lg shadow-rose-200 transition hover:-translate-y-0.5 hover:bg-pink-700 sm:w-auto" type="submit">Gửi yêu cầu đặt bánh ↗</button><p id="form-message" class="mt-3 text-sm text-rosebrand" role="status"></p></div>
+          </form>
+        </div>
+        <aside class="h-fit rounded-3xl border border-rose-200 bg-rose-50 p-7"><span class="text-3xl">♡</span><h3 class="mt-3 text-xl font-extrabold">Một chiếc bánh dành riêng cho bạn</h3><p class="mt-3 leading-7 text-stone-600">Sinh nhật, kỷ niệm hay đơn giản là muốn làm ai đó vui — Melody sẵn sàng cùng bạn biến ý tưởng thành chiếc bánh thật xinh.</p><div class="mt-6 border-t border-rose-200 pt-5"><p class="text-sm text-stone-500">Giờ mở cửa</p><p class="mt-1 font-bold">08:00 – 21:00 · Mỗi ngày</p><p class="mt-4 text-sm text-stone-500">Liên hệ</p><p class="mt-1 font-bold">hello@melodybakery.vn</p><p class="mt-1 font-bold">0900 123 456</p></div></aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-stone-950 text-stone-300">
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:grid-cols-2 md:grid-cols-4 lg:px-8">
+      <div><a href="#trang-chu" class="flex items-center gap-2 text-2xl font-extrabold text-white"><span class="brand-mark">m</span>melody<span class="text-rose-400">.</span></a><p class="mt-4 max-w-xs text-sm leading-7 text-stone-400">Một chút ngọt ngào, cả ngày dịu dàng. Bánh thủ công làm mới mỗi ngày.</p></div>
+      <div><h3 class="footer-title">Liên hệ</h3><p class="footer-line">12 Đường Hoa Hồng, TP. Hồ Chí Minh</p><p class="footer-line">0900 123 456</p><p class="footer-line">hello@melodybakery.vn</p></div>
+      <div><h3 class="footer-title">Giờ mở cửa</h3><p class="footer-line">Thứ 2 – Chủ nhật</p><p class="footer-line">08:00 – 21:00</p><p class="footer-line">Nhận đặt bánh theo yêu cầu</p></div>
+      <div><h3 class="footer-title">Theo dõi Melody</h3><a class="footer-line hover:text-white" href="#dat-banh">Instagram · @melody.bakery</a><a class="footer-line hover:text-white" href="#dat-banh">Facebook · Melody Bakery</a><a class="footer-line hover:text-white" href="#dat-banh">TikTok · @melody.bakes</a></div>
+    </div>
+    <div class="border-t border-white/10 px-5 py-5 text-center text-xs text-stone-500">© 2026 Melody Bakery. Made with love and a little sugar.</div>
+  </footer>
+  <button id="back-top" aria-label="Lên đầu trang" class="back-top">↑</button>
+  <script src="../js/script.js"></script>
+</body>
+</html>

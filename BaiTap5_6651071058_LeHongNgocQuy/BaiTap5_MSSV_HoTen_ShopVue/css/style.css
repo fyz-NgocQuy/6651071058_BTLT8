@@ -1,0 +1,45 @@
+/* =========================================================
+   Suna Tech Gear - CSS bổ sung cho Tailwind (một font duy nhất: Be Vietnam Pro)
+   ========================================================= */
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { font-family: "Be Vietnam Pro", system-ui, sans-serif; }
+button, input { font-family: inherit; }
+
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes wiggle { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg); } }
+@keyframes shine { to { background-position: 200% center; } }
+@keyframes cartbump { 0%,100% { transform: scale(1); } 40% { transform: scale(1.12); } }
+.bob { animation: bob 3.8s ease-in-out infinite; }
+.wiggle { animation: wiggle 2.8s ease-in-out infinite; transform-origin: 50% 90%; }
+.cart-bump { animation: cartbump .4s ease; }
+
+.logo-badge { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #1f6fe5; color: #fff; font-size: 20px; }
+.nav-link { position: relative; padding-bottom: 4px; transition: color .2s; }
+.nav-link::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: #1f6fe5; transition: width .25s; }
+.nav-link:hover { color: #1f6fe5; } .nav-link:hover::after { width: 100%; }
+
+.intro { background: linear-gradient(180deg, #f1f6ff, #fff); border-bottom: 1px solid #e1ecff; }
+
+/* Thẻ sản phẩm: viền mảnh, nhấc nhẹ khi hover */
+.product { border: 1px solid #dbe5f3; box-shadow: 0 2px 6px rgba(20,60,120,.06); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.product:hover { transform: translateY(-4px); border-color: #8fb4f2; box-shadow: 0 14px 28px -14px rgba(31,111,229,.45); }
+
+/* Giỏ hàng */
+.cart-card { background: #eef3fb; border: 1px solid #dbe5f3; box-shadow: 0 10px 30px -18px rgba(20,60,120,.4); }
+.qty { width: 22px; height: 22px; border-radius: 6px; background: #e1ecff; color: #1f6fe5; font-weight: 800; line-height: 1; transition: background .2s, transform .15s; }
+.qty:hover { background: #1f6fe5; color: #fff; } .qty:active { transform: scale(.85); }
+.checkout { background: linear-gradient(90deg, #3b8bf0, #6b7cf5, #3b8bf0); background-size: 200% auto; box-shadow: 0 8px 18px -8px rgba(59,139,240,.8); }
+.checkout:not(:disabled):hover { animation: shine 1.5s linear infinite; }
+.checkout:disabled { opacity: .45; cursor: not-allowed; }
+
+/* Dải khuyến mãi: gradient xanh sang tím như trong thiết kế */
+.promo-band { background: linear-gradient(90deg, #2f80ed, #7b5fe6); }
+
+.soc { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #2c2c2c; color: #fff; font-weight: 700; transition: transform .25s, background .25s; }
+.soc:hover { background: #1f6fe5; transform: translateY(-3px); }
+
+.pop-enter-active, .pop-leave-active { transition: all .35s ease; }
+.pop-enter-from, .pop-leave-to { opacity: 0; transform: translate(-50%, 24px); }
+
+::selection { background: #c3d8ff; }
+@media (prefers-reduced-motion: reduce) { .bob,.wiggle,.cart-bump { animation: none; } html { scroll-behavior: auto; } }

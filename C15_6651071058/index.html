@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tạo tabs trong jQuery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+
+       
+    </head>
+    <body>
+        <div class="tab-wrapper" >
+            <ul class="tab">
+                <li>
+                    <a href="#tab-main-info">Thông tin chính</a>
+                </li>
+                <li>
+                    <a href="#tab-image">Hình ảnh</a>
+                </li>
+                <li>
+                    <a href="#tab-seo">SEO</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-item" id="tab-main-info">
+                    Tab thông tin chinh
+                </div>
+                <div class="tab-item" id="tab-image">
+                    Tab hình ảnh
+                </div>
+                <div class="tab-item" id="tab-seo">
+                    Tab SEO
+                </div>
+            </div>
+        </div>
+    <script>
+$(function () {
+    function showTab(href) {
+        $('.tab li').removeClass('active');
+        $('.tab a[href="' + href + '"]').parent().addClass('active');
+        $('.tab-item').hide();
+        $(href).fadeIn(200);
+    }
+
+    $('.tab a').on('click', function (e) {
+        e.preventDefault();
+        showTab($(this).attr('href'));
+    });
+
+    // Mặc định mở tab đầu tiên
+    showTab($('.tab a').first().attr('href'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Home</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h2 class="text-center">Custom File Input</h2>
+
+<div class="custom-file-wrp">
+	<div class="filename">
+		Ex:sample.jpg
+	</div>
+	<div class="custom-file">
+		<label for="fileupload">Upload</label>
+		<input type="file"  id="fileupload">
+	</div>
+</div>
+
+
+<script src="js/jquery-latest.min.js"></script>
+<script>
+$(function () {
+    var placeholder = $('.filename').text().trim();   // "Ex:sample.jpg"
+
+    $('#fileupload').on('change', function () {
+        if (this.files && this.files.length) {
+            $('.filename').text(this.files[0].name).css('color', '#333');
+        } else {
+            $('.filename').text(placeholder).css('color', '#999');
+        }
+    });
+});
+</script>
+</body>
+</html>

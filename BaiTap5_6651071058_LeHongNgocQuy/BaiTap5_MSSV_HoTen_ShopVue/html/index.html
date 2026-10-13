@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Suna Tech Gear - shop phụ kiện điện thoại: ốp lưng, tai nghe, sạc, cáp. Giỏ hàng cập nhật tức thời bằng Vue 3.">
+  <title>Suna Tech Gear | Phụ kiện điện thoại</title>
+  <link rel="icon" href="../images/mascot-pup.svg" type="image/svg+xml">
+
+  <!-- Một font duy nhất cho toàn trang, hỗ trợ đầy đủ tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
+
+  <!-- CSS framework hỗ trợ: Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'] },
+      colors: { brand: { 50: '#f1f6ff', 100: '#e1ecff', 200: '#c3d8ff', 500: '#1f6fe5', 600: '#175dc7' } }
+    } } }
+  </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>[v-cloak]{display:none}</style>
+</head>
+
+<body class="font-sans text-slate-700 bg-white antialiased">
+
+  <!-- Vue quản lý toàn bộ trang (kể cả số lượng giỏ hàng ở header) -->
+  <div id="app" v-cloak>
+
+    <!-- ================= HEADER + NAVIGATION ================= -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+      <nav class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-3" aria-label="Điều hướng chính">
+        <a href="#trang-chu" class="flex items-center gap-2">
+          <span class="logo-badge" aria-hidden="true">⚡</span>
+          <span class="leading-tight"><span class="block font-extrabold text-slate-800">Suna Tech Gear</span><span class="block text-[10px] font-medium text-slate-400">Phụ kiện điện thoại</span></span>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+          <li><a class="nav-link" href="#trang-chu">Trang chủ</a></li>
+          <li><a class="nav-link" href="#san-pham">Sản phẩm</a></li>
+          <li><a class="nav-link" href="#khuyen-mai">Khuyến mãi</a></li>
+          <li><a class="nav-link" href="#lien-he">Liên hệ</a></li>
+        </ul>
+
+        <div class="flex items-center gap-3">
+          <!-- Ô tìm kiếm: v-model liên kết 2 chiều với tuKhoa -->
+          <label class="hidden sm:flex items-center gap-2 border border-slate-300 rounded-full px-3 py-1.5 text-sm focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition">
+            <span aria-hidden="true">🔍</span>
+            <input v-model="tuKhoa" type="search" placeholder="Tìm sản phẩm..." class="outline-none bg-transparent w-36" aria-label="Tìm sản phẩm">
+          </label>
+          <a href="#gio-hang" class="cart-btn flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-bold px-4 py-2 rounded-xl transition" :class="{ 'cart-bump': bump }">
+            <span aria-hidden="true">🛒</span>
+            <span>Giỏ hàng ({{ cartCount }})</span>
+          </a>
+        </div>
+      </nav>
+      <!-- Ô tìm kiếm cho điện thoại -->
+      <div class="sm:hidden px-5 pb-3">
+        <label class="flex items-center gap-2 border border-slate-300 rounded-full px-3 py-2 text-sm">
+          <span aria-hidden="true">🔍</span>
+          <input v-model="tuKhoa" type="search" placeholder="Tìm sản phẩm..." class="outline-none bg-transparent w-full" aria-label="Tìm sản phẩm">
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <!-- Dải giới thiệu nhỏ -->
+      <section id="trang-chu" class="intro">
+        <div class="max-w-7xl mx-auto px-5 py-8 flex flex-col md:flex-row items-center gap-6">
+          <div class="flex-1 text-center md:text-left">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 leading-tight">Phụ kiện chính hãng,<br class="hidden md:block"> giao nhanh trong ngày</h1>
+            <p class="mt-3 text-slate-600 max-w-lg mx-auto md:mx-0">Ốp lưng, tai nghe, sạc, cáp. Thêm món bạn thích vào giỏ và xem tổng tiền cập nhật ngay.</p>
+          </div>
+          <div class="relative w-40 h-28 shrink-0 hidden sm:block" aria-hidden="true">
+            <img src="../images/mascot-pup.svg" class="absolute right-0 bottom-0 w-28 bob" alt="">
+            <img src="../images/mascot-bunny.svg" class="absolute left-0 bottom-0 w-20 wiggle" alt="">
+          </div>
+        </div>
+      </section>
+
+      <!-- Lưới: danh sách sản phẩm + ASIDE giỏ hàng -->
+      <div class="max-w-7xl mx-auto px-5 py-8 grid grid-cols-1 lg:grid-cols-[1fr_330px] gap-8">
+
+        <!-- ================= SECTION SẢN PHẨM (v-for) ================= -->
+        <section id="san-pham" aria-labelledby="sp-title">
+          <div class="flex items-baseline justify-between gap-3">
+            <h2 id="sp-title" class="text-2xl font-bold text-slate-800">Sản phẩm</h2>
+            <p class="text-sm text-slate-500">Hiển thị {{ danhSachLoc.length }} / {{ products.length }} sản phẩm</p>
+          </div>
+
+          <div v-if="danhSachLoc.length === 0" class="mt-8 text-center border border-dashed border-slate-300 rounded-2xl p-10">
+            <p class="font-semibold">Không tìm thấy “{{ tuKhoa }}”.</p>
+            <p class="text-sm text-slate-500 mt-1">Thử từ khoá khác như “ốp lưng”, “tai nghe”, “sạc”.</p>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            <!-- Vue tự lặp: mỗi sản phẩm là 1 ARTICLE -->
+            <article v-for="sp in danhSachLoc" :key="sp.id" class="product group bg-white rounded-2xl p-3 flex flex-col">
+              <div class="rounded-xl overflow-hidden bg-brand-50">
+                <img :src="sp.anh" :alt="sp.ten" @error="loiAnh($event, sp)" loading="lazy" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-500">
+              </div>
+              <h3 class="font-bold text-sm text-slate-800 mt-3 leading-snug">{{ sp.ten }}</h3>
+              <p class="text-xs text-slate-500 mt-1 flex-1">{{ sp.moTa }}</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="font-extrabold text-brand-500 text-sm">{{ dinhDangGia(sp.gia) }}</span>
+                <button type="button" @click="themVaoGio(sp)" class="bg-brand-500 hover:bg-brand-600 active:scale-90 text-white w-9 h-9 rounded-lg transition" :aria-label="'Thêm ' + sp.ten + ' vào giỏ'">🛒</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= ASIDE GIỎ HÀNG ================= -->
+        <aside id="gio-hang" aria-labelledby="cart-title">
+          <div class="cart-card rounded-2xl p-5 lg:sticky lg:top-24">
+            <h2 id="cart-title" class="text-lg font-extrabold text-slate-800">Giỏ hàng của bạn</h2>
+            <p class="text-xs text-slate-500">{{ cartCount }} sản phẩm đã chọn</p>
+
+            <!-- v-if: giỏ trống -->
+            <div v-if="cart.length === 0" class="text-center py-8">
+              <img src="../images/mascot-bunny.svg" class="w-20 mx-auto wiggle" alt="">
+              <p class="mt-3 font-semibold text-slate-500">Giỏ hàng trống</p>
+              <p class="text-xs text-slate-400">Bấm nút 🛒 ở sản phẩm để thêm vào.</p>
+            </div>
+
+            <!-- v-else: liệt kê bằng v-for -->
+            <ul v-else class="mt-4 space-y-3">
+              <li v-for="(sp, index) in cart" :key="sp.id" class="flex items-center gap-3 bg-white rounded-xl p-2 pr-3 shadow-sm">
+                <img :src="sp.anh" :alt="sp.ten" @error="loiAnh($event, sp)" class="w-14 h-14 rounded-lg object-cover bg-brand-50">
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-xs leading-snug">{{ sp.ten }}</p>
+                  <p class="text-xs text-brand-500 font-bold">{{ dinhDangGia(sp.gia * sp.soLuong) }}</p>
+                  <div class="flex items-center gap-2 mt-1">
+                    <button type="button" @click="doiSoLuong(index, -1)" class="qty" aria-label="Giảm">−</button>
+                    <span class="text-xs font-bold w-5 text-center">{{ sp.soLuong }}</span>
+                    <button type="button" @click="doiSoLuong(index, 1)" class="qty" aria-label="Tăng">+</button>
+                  </div>
+                </div>
+                <button type="button" @click="xoaKhoiGio(index)" class="w-6 h-6 rounded-full bg-red-500 hover:bg-red-600 text-white text-xs font-bold transition" :aria-label="'Xoá ' + sp.ten">×</button>
+              </li>
+            </ul>
+
+            <div class="mt-5 pt-4 border-t border-slate-300 flex justify-between items-center">
+              <span class="font-bold text-sm">Tổng tiền</span>
+              <span class="text-lg font-extrabold text-brand-500">{{ dinhDangGia(tongTien) }}</span>
+            </div>
+            <button type="button" @click="thanhToan" :disabled="cart.length === 0" class="checkout mt-4 w-full text-white font-bold py-3 rounded-full transition">Thanh toán</button>
+          </div>
+        </aside>
+      </div>
+
+      <!-- ================= KHUYẾN MÃI HÔM NAY (tĩnh) ================= -->
+      <section id="khuyen-mai" aria-labelledby="promo-title" class="promo-band">
+        <div class="max-w-7xl mx-auto px-5 py-10 text-center text-white">
+          <h2 id="promo-title" class="text-2xl md:text-3xl font-extrabold">GIẢM 20% TẤT CẢ ỐP LƯNG! ƯU ĐÃI CÓ HẠN</h2>
+          <p class="mt-1 text-white/85 text-sm">Khuyến mãi hôm nay</p>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
+            <div class="bg-white/15 border border-white/30 rounded-xl p-4"><p class="font-bold">Giảm 20% ốp lưng</p><p class="text-sm text-white/85 mt-1">Áp dụng cho mọi mẫu ốp lưng đến hết Chủ nhật.</p></div>
+            <div class="bg-white/15 border border-white/30 rounded-xl p-4"><p class="font-bold">Miễn phí vận chuyển</p><p class="text-sm text-white/85 mt-1">Cho đơn từ 500.000đ, giao nhanh nội thành trong ngày.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="lien-he" class="bg-neutral-900 text-slate-300">
+      <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex gap-2"><img src="../images/mascot-pup.svg" class="w-11" alt=""><img src="../images/mascot-bunny.svg" class="w-11" alt=""></div>
+          <p class="font-extrabold text-white mt-3">Suna Tech Gear</p>
+          <p class="text-sm text-slate-400 mt-1">Phụ kiện điện thoại chính hãng, giá tốt.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-white mb-2">Về chúng tôi</h3>
+          <ul class="space-y-1 text-sm"><li>Giới thiệu</li><li>Liên hệ</li><li>Chính sách bảo mật</li></ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-white mb-2">Thông tin liên hệ</h3>
+          <ul class="space-y-1 text-sm"><li>123 Đường Công Nghệ, Q.1, TP.HCM</li><li>Điện thoại: 0901 234 567</li><li>Email: hi@sunatech.vn</li></ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-white mb-2">Mạng xã hội</h3>
+          <div class="flex gap-3"><a class="soc" href="#" aria-label="Facebook">f</a><a class="soc" href="#" aria-label="YouTube">▶</a><a class="soc" href="#" aria-label="Instagram">ig</a></div>
+        </div>
+      </div>
+      <p class="border-t border-neutral-700 text-center text-xs text-slate-400 py-4">© 2026 Suna Tech Gear. Bản quyền thuộc về Suna. Bài tập Vue.js (CDN)</p>
+    </footer>
+
+    <!-- Toast do Vue điều khiển -->
+    <transition name="pop">
+      <div v-if="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white border border-slate-200 rounded-full px-5 py-3 shadow-2xl flex items-center gap-3 font-semibold text-sm" role="status">
+        <img src="../images/mascot-pup.svg" class="w-7" alt=""><span>{{ toast }}</span>
+      </div>
+    </transition>
+
+    <button type="button" @click="cuonLenDau" class="fixed bottom-6 right-5 z-40 bg-brand-500 hover:bg-brand-600 text-white w-11 h-11 rounded-full shadow-xl transition" aria-label="Lên đầu trang">↑</button>
+  </div>
+
+  <!-- Vue 3 CDN phải đứng TRƯỚC app.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
